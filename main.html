@@ -1,0 +1,995 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <style>
+           * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            :root {
+                --primary-color: #1a237e;
+                --secondary-color: #0d47a1;
+                --accent-color: #2962ff;
+                --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%);
+                --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .body {
+                background: var(--background-gradient);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quote {
+                width: 100%;
+                padding: 1.2rem;
+                background: linear-gradient(120deg, #1a237e10, #2962ff10);
+                text-align: center;
+                font-size: 1.1rem;
+                color: var(--primary-color);
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+                backdrop-filter: blur(10px);
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                animation: fadeIn 0.8s var(--transition-timing);
+            }
+
+            .header {
+            width: 100%;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.05) 0%, rgba(41, 98, 255, 0.05) 100%);
+        }
+
+        .businessName {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding: 0 2rem;
+            text-transform: uppercase;
+        }
+
+        .businessName span {
+            background: linear-gradient(45deg, #1a237e, #2962ff, #448aff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 8s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        .businessName::before,
+        .businessName::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #1a237e;
+            animation: cornerPulse 2s infinite;
+        }
+
+        .businessName::before {
+            top: -5px;
+            left: 0;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .businessName::after {
+            bottom: -5px;
+            right: 0;
+            border-left: none;
+            border-top: none;
+        }
+
+        .subText {
+            font-size: 1.1rem;
+            color: #1a237e;
+            opacity: 0.8;
+            margin-top: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes cornerPulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+            .loadingSpinner {
+            width: 60px;
+            height: 60px;
+            margin: 2rem auto;
+            border: 4px solid var(--background-gradient);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .processingContainer {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .processingText {
+            margin-top: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .loadingDots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80% { content: '...'; }
+            100% { content: ''; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .confirmationIcon {
+            font-size: 3.7rem;
+            color: var(--success-color);
+            margin-bottom: 1.3rem;
+            animation: scaleIn 0.5s var(--transition-timing);
+            display: block;
+        }
+        
+            .businessName::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 3px;
+                background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+                border-radius: 2px;
+            }
+
+            .mainContainer {
+                max-width: 1400px;
+                width: 90%;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2.5rem;
+                padding: 2rem;
+                justify-items: center;
+            }
+
+
+
+    .productCard {
+                padding-top:1vh;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 20px;
+                box-shadow: var(--card-shadow);
+                overflow: hidden;
+                width: 100%;
+                max-width: 350px;
+                height: 47vh;
+                transition: all 0.4s var(--transition-timing);
+                animation: fadeInUp 0.8s var(--transition-timing);
+                position: relative;
+            }
+
+
+    .productImage {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+                transition: transform 0.6s var(--transition-timing);
+            }
+
+    /* Mobile-specific styles */
+    @media (max-width: 768px) {
+        .businessName {
+            font-size: 3rem;
+            letter-spacing: 3px;
+        }
+
+        .mainContainer {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        .productCard {
+            max-width: 100%;
+            min-height: 350px;
+        }
+
+        .productImage {
+            height: 200px;
+            width: auto;
+            max-width: 80%;
+            margin: 0 auto !important;
+            display: block;
+        }
+
+        /* Reset all specific image styles */
+        .productCard img {
+            margin: 0 auto !important;
+            padding: 1rem !important;
+            width: auto !important;
+            max-width: 80% !important;
+            height: auto !important;
+            max-height: 200px !important;
+        }
+
+        /* Modal adjustments for mobile */
+        .swapContent {
+            padding: 1rem;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .swapContainer {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .swapItem {
+            width: 100%;
+        }
+
+        .swapImage {
+            height: 200px;
+            width: auto;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .swapButton {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            margin: 1rem auto;
+        }
+
+        .modalContent {
+            padding: 1.5rem;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        /* Adjust confirmation message for mobile */
+        #confirmationContent {
+            padding: 1rem;
+        }
+
+        .confirmationIcon {
+            font-size: 3rem;
+        }
+
+        #confirmationTitle {
+            font-size: 1.4rem !important;
+        }
+
+        #estimatedTime {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Additional mobile optimizations */
+    @media (max-width: 480px) {
+        .businessName {
+            font-size: 2.5rem;
+        }
+
+        .subText {
+            font-size: 0.9rem;
+        }
+
+        .quote {
+            font-size: 0.9rem;
+            padding: 0.8rem;
+        }
+
+        .productTitle {
+            font-size: 1.2rem;
+        }
+
+        .productDetails {
+            font-size: 0.9rem;
+        }
+
+        .tradeButton {
+            padding: 0.8rem 1.2rem;
+            font-size: 0.8rem;
+        }
+    }
+
+            .productCard::before {
+                z-index: 1000;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+                transform: scaleX(0);
+                transition: transform 0.4s var(--transition-timing);
+            }
+
+            .productCard:hover::before {
+                transform: scaleX(1);
+            }
+
+            .productCard:hover {
+                transform: translateY(-15px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            }
+
+
+            .productCard:hover .productImage {
+                transform: scale(1.08);
+            }
+
+            .productInfo {
+                padding: 2rem;
+                background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+            }
+
+            .productTitle {
+                font-size: 1.4rem;
+                color: var(--primary-color);
+                margin-bottom: 1rem;
+                font-weight: 600;
+                position: relative;
+                padding-bottom: 0.5rem;
+            }
+
+            .productTitle::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 40px;
+                height: 2px;
+                background: var(--accent-color);
+                transition: width 0.3s ease;
+            }
+
+            .productCard:hover .productTitle::after {
+                width: 60px;
+            }
+
+            .productDetails {
+                color: #555;
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.6;
+            }
+
+            .tradeButton {
+                background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+                border: none;
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                color: white;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s var(--transition-timing);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 0.9rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .tradeButton::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                transition: left 0.5s var(--transition-timing);
+            }
+
+            .tradeButton:hover::before {
+                left: 100%;
+            }
+
+            .tradeButton:hover:not(:disabled) {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(26, 35, 126, 0.3);
+            }
+
+           
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s var(--transition-timing);
+        }
+
+        .swapModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s var(--transition-timing);
+        }
+
+        .swapContent {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 900px;
+            transform: translateY(30px);
+            transition: transform 0.4s var(--transition-timing);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .swapContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .swapItem {
+            flex: 1;
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--background-gradient);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .swapImage {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .swapDetails {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+        }
+
+        .priceTag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .swapButton {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-timing);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swapButton:hover {
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .swapButton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s var(--transition-timing);
+        }
+
+        .swapButton:hover::before {
+            left: 100%;
+        }
+
+        /* Existing modal styles remain the same */
+        .modalContent {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            transform: translateY(30px);
+            transition: transform 0.4s var(--transition-timing);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animation keyframes remain the same */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+        <title>EcoSwap - Premium Fashion Trading</title>
+    </head>
+    <body class="body">
+        <div class="quote">Swap your style, save the planet - one trade at a time</div>
+        
+        <div class="header">
+            <h1 class="businessName">
+                <span>EcoSwap</span>
+            </h1>
+            <div class="subText">Premium Fashion Exchange</div>
+        </div>
+            <!-- site produkti se posle ova vo normalniot html-->
+
+        <div class="mainContainer">
+            <div style="z-index: 1000;" class="productCard">
+                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacket.png" alt="Denim Jacket" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Vintage Denim Jacket</h3>
+                    <p class="productDetails">Size: M | Condition: Good<br>Original Price: $80</p>
+                    <button class="tradeButton" onclick="initiateTrade('Vintage Denim Jacket')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Jarko i Darko moment-->
+
+            <div class="productCard">
+                <img style="margin-bottom: -3vh;margin-left: 4.5vw; width: 7vw" src="./data/summerDress.png" alt="Summer Dress" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Floral Summer Dress</h3>
+                    <p class="productDetails">Size: S | Condition: Like New<br>Original Price: $65</p>
+                    <button class="tradeButton" onclick="initiateTrade('Floral Summer Dress')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="productCard">
+                <img style="padding-top: 6vh;margin-top: -6vh; margin-bottom: -2vh; margin-left: 3.5vw; height:30vh; width: 9vw" src="./data/leatherBoots.png" alt="Leather Boots" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Classic Leather Boots</h3>
+                    <p class="productDetails">Size: 39 | Condition: Good<br>Original Price: $120</p>
+                    <button class="tradeButton" onclick="initiateTrade('Classic Leather Boots')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+
+            <div style="z-index: 1000;" class="productCard">
+                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacket.png" alt="Denim Jacket" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Vintage Denim Jacket</h3>
+                    <p class="productDetails">Size: M | Condition: Good<br>Original Price: $80</p>
+                    <button class="tradeButton" onclick="initiateTrade('Vintage Denim Jacket')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="productCard">
+                <img style="margin-bottom: -3vh;margin-left: 4.5vw; width: 7vw" src="./data/summerDress.png" alt="Summer Dress" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Floral Summer Dress</h3>
+                    <p class="productDetails">Size: S | Condition: Like New<br>Original Price: $65</p>
+                    <button class="tradeButton" onclick="initiateTrade('Floral Summer Dress')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="productCard">
+                <img style="padding-top: 6vh;margin-top: -6vh; margin-bottom: -2vh; margin-left: 3.5vw; height:30vh; width: 9vw" src="./data/leatherBoots.png" alt="Leather Boots" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Classic Leather Boots</h3>
+                    <p class="productDetails">Size: 39 | Condition: Good<br>Original Price: $120</p>
+                    <button class="tradeButton" onclick="initiateTrade('Classic Leather Boots')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>            <div style="z-index: 1000;" class="productCard">
+                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacket.png" alt="Denim Jacket" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Vintage Denim Jacket</h3>
+                    <p class="productDetails">Size: M | Condition: Good<br>Original Price: $80</p>
+                    <button class="tradeButton" onclick="initiateTrade('Vintage Denim Jacket')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="productCard">
+                <img style="margin-bottom: -3vh;margin-left: 4.5vw; width: 7vw" src="./data/summerDress.png" alt="Summer Dress" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Floral Summer Dress</h3>
+                    <p class="productDetails">Size: S | Condition: Like New<br>Original Price: $65</p>
+                    <button class="tradeButton" onclick="initiateTrade('Floral Summer Dress')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="productCard">
+                <img style="padding-top: 6vh;margin-top: -6vh; margin-bottom: -2vh; margin-left: 3.5vw; height:30vh; width: 9vw" src="./data/leatherBoots.png" alt="Leather Boots" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Classic Leather Boots</h3>
+                    <p class="productDetails">Size: 39 | Condition: Good<br>Original Price: $120</p>
+                    <button class="tradeButton" onclick="initiateTrade('Classic Leather Boots')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>            <div style="z-index: 1000;" class="productCard">
+                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacket.png" alt="Denim Jacket" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Vintage Denim Jacket</h3>
+                    <p class="productDetails">Size: M | Condition: Good<br>Original Price: $80</p>
+                    <button class="tradeButton" onclick="initiateTrade('Vintage Denim Jacket')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="productCard">
+                <img style="margin-bottom: -3vh;margin-left: 4.5vw; width: 7vw" src="./data/summerDress.png" alt="Summer Dress" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Floral Summer Dress</h3>
+                    <p class="productDetails">Size: S | Condition: Like New<br>Original Price: $65</p>
+                    <button class="tradeButton" onclick="initiateTrade('Floral Summer Dress')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="productCard">
+                <img style="padding-top: 6vh;margin-top: -6vh; margin-bottom: -2vh; margin-left: 3.5vw; height:30vh; width: 9vw" src="./data/leatherBoots.png" alt="Leather Boots" class="productImage">
+                <div class="productInfo">
+                    <h3 class="productTitle">Classic Leather Boots</h3>
+                    <p class="productDetails">Size: 39 | Condition: Good<br>Original Price: $120</p>
+                    <button class="tradeButton" onclick="initiateTrade('Classic Leather Boots')">
+                        <i class='bx bx-transfer'></i>
+                        Trade Now
+                    </button>
+                </div>
+            </div>
+        </div>
+            <!-- swaop windowot-->
+
+        <div id="swapModal" class="swapModal">
+            <div class="swapContent">
+                <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 1rem;">Confirm Your Swap</h2>
+                <div class="swapContainer">
+                    <div class="swapItem">
+                        <h3>Your Item</h3>
+                        <img src="./data/designerWatch.png" alt="Your Item" class="swapImage" id="yourItemImage">
+                        <h4 id="yourItemTitle" style="color: var(--primary-color); margin: 0.5rem 0;"></h4>
+                        <div class="swapDetails">
+                            <p>Condition: Excellent</p>
+                            <p>Size: M</p>
+                            <div class="priceTag">Original Price: $<span id="yourItemPrice"></span></div>
+                        </div>
+                    </div>
+
+                    <button class="swapButton" onclick="confirmSwap()">
+                        <i class='bx bx-transfer'></i>
+                    </button>
+
+                    <div class="swapItem">
+                        <h3>Item to Receive</h3>
+                        <img  src="/api/placeholder/300/300" alt="Trade Item" class="swapImage" id="tradeItemImage">
+                        <h4 id="tradeItemTitle" style="color: var(--primary-color); margin: 0.5rem 0;"></h4>
+                        <div class="swapDetails">
+                            <p>Condition: Good</p>
+                            <p>Size: L</p>
+                            <div class="priceTag">Original Price: $<span id="tradeItemPrice"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- kako lici trade windowo-->
+
+        <div id="tradeModal" class="modal">
+            <div class="modalContent">
+                <div id="processingContent" class="processingContainer">
+                    <h3 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1.5rem;">Processing your trade</h3>
+                    <div class="loadingSpinner"></div>
+                    <p style="color: #666; font-size: 1.1rem;">
+                        Verifying trade details<span class="loadingDots"></span>
+                    </p>
+                </div>
+                <div id="confirmationContent" style="display: none;">
+                    <i class='bx bx-check-circle confirmationIcon'></i>
+                    <h3 id="confirmationTitle" style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1.5rem;"></h3>
+                    <div id="estimatedTime"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const initiateTrade = (itemName) => {
+            const swapModal = document.getElementById('swapModal');
+            document.getElementById('tradeItemTitle').textContent = itemName;
+            document.getElementById('yourItemTitle').textContent = "Your Designer Watch";
+            document.getElementById('yourItemPrice').textContent = "150";
+            // DATA ZA SITE SLIKI VO INITT TRADE WINDOWOT
+            const items = {
+                "Vintage Denim Jacket": {
+                    price: "80",
+                    image: "./data/denimJacket.png"
+                },
+                "Floral Summer Dress": {
+                    price: "65",
+                    image: "./data/summerDress.png"
+                },
+                "Classic Leather Boots": {
+                    price: "120",
+                    image: "./data/leatherBoots.png"
+                }
+            };
+            
+            const selectedItem = items[itemName] || { price: "100", image: "/api/placeholder/300/300" };
+            document.getElementById('tradeItemPrice').textContent = selectedItem.price;
+            
+            const tradeItemImage = document.getElementById('tradeItemImage');
+            tradeItemImage.src = selectedItem.image;
+            tradeItemImage.alt = itemName;
+            
+            if (itemName === "Vintage Denim Jacket") {
+                tradeItemImage.style.width = "80%";
+                tradeItemImage.style.marginLeft = "10%";
+            } else if (itemName === "Floral Summer Dress") {
+                tradeItemImage.style.width = "60%";
+                tradeItemImage.style.marginLeft = "0%";
+            } else if (itemName === "Classic Leather Boots") {
+                tradeItemImage.style.width = "70%";
+                tradeItemImage.style.marginLeft = "15%";
+                tradeItemImage.style.paddingTop = "2rem";
+            }
+            
+            swapModal.style.display = 'flex';
+            requestAnimationFrame(() => {
+                swapModal.style.opacity = '1';
+                swapModal.querySelector('.swapContent').style.transform = 'translateY(0)';
+            });
+        };
+        
+        //swap funkcija
+            function confirmSwap() {
+                const swapModal = document.getElementById('swapModal');
+                const tradeModal = document.getElementById('tradeModal');
+                const processingContent = document.getElementById('processingContent');
+                const confirmationContent = document.getElementById('confirmationContent');
+        
+                swapModal.style.opacity = '0';
+                swapModal.querySelector('.swapContent').style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    swapModal.style.display = 'none';
+                    
+                    tradeModal.style.display = 'flex';
+                    processingContent.style.display = 'block';
+                    confirmationContent.style.display = 'none';
+                    
+                    requestAnimationFrame(() => {
+                        tradeModal.style.opacity = '1';
+                        tradeModal.querySelector('.modalContent').style.transform = 'translateY(0)';
+                    });
+        
+                    setTimeout(() => {
+                        processingContent.style.display = 'none';
+                        confirmationContent.style.display = 'block';
+                        
+                        const deliveryDate = new Date();
+                        const daysToAdd = Math.floor(Math.random() * 5) + 3;
+                        deliveryDate.setDate(deliveryDate.getDate() + daysToAdd);
+                        
+                        const formattedDate = deliveryDate.toLocaleDateString('en-US', {
+                            weekday: 'long',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+                        
+                        const timeOfDay = ['morning', 'afternoon', 'evening'][Math.floor(Math.random() * 3)];
+                        
+                        document.getElementById('confirmationTitle').textContent = 
+                            `Trade request confirmed for ${document.getElementById('tradeItemTitle').textContent}!`;
+                        
+                        document.getElementById('estimatedTime').innerHTML = `
+                            <div style="margin-bottom: 0.8rem;">
+                                <strong style="font-size: 1.1rem; color: var(--primary-color);">
+                                    Estimated Arrival
+                                </strong>
+                            </div>
+                            <div style="color: var(--secondary-color); font-size: 1.2rem; margin-bottom: 0.5rem;">
+                                ${formattedDate}
+                            </div>
+                            <div style="color: #666; font-size: 0.9rem;">
+                                Expected delivery in the ${timeOfDay}
+                            </div>
+                            <div style="margin-top: 1rem; font-size: 0.9rem; color: #4CAF50;">
+                                <i class='bx bx-package' style="vertical-align: middle;"></i>
+                                Tracking details will be sent to your email
+                            </div>
+                        `;
+                        
+                        requestAnimationFrame(() => {
+                            confirmationContent.style.opacity = '1';
+                        }); //FUCKING RETARDED FINALLY OPACITY
+                        
+                        setTimeout(() => {
+                            tradeModal.style.opacity = '0';
+                            tradeModal.querySelector('.modalContent').style.transform = 'translateY(30px)';
+                            
+                            setTimeout(() => {
+                                tradeModal.style.display = 'none';
+                                processingContent.style.display = 'block';
+                                processingContent.style.opacity = '1';
+                                confirmationContent.style.display = 'none';
+                                confirmationContent.style.opacity = '0';
+                            }, 400);
+                        }, 35000);
+                    }, 2000);
+                }, 400);
+            }
+        // OFMGPS
+            window.onclick = function(event) {
+                const swapModal = document.getElementById('swapModal');
+                const tradeModal = document.getElementById('tradeModal');
+                
+                if (event.target == swapModal) {
+                    swapModal.style.opacity = '0';
+                    swapModal.querySelector('.swapContent').style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        swapModal.style.display = 'none';
+                    }, 400);
+                }
+                
+                if (event.target == tradeModal) {
+                    tradeModal.style.opacity = '0';
+                    tradeModal.querySelector('.modalContent').style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        tradeModal.style.display = 'none';
+                        document.getElementById('processingContent').style.display = 'block';
+                        document.getElementById('processingContent').style.opacity = '1';
+                        document.getElementById('confirmationContent').style.display = 'none';
+                        document.getElementById('confirmationContent').style.opacity = '0';
+                    }, 400);
+                }
+            }
+        // BRAT 3 SAATOT E NE SAKADM A GO PRAVAM OVA I NIEED A BJ
+            document.addEventListener('DOMContentLoaded', () => {
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1
+                    }
+                );
+        
+                document.querySelectorAll('.productCard').forEach(card => {
+                    observer.observe(card);
+                });
+            });
+            </script>
+    </body>
+    </html>
