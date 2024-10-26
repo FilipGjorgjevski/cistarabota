@@ -50,12 +50,12 @@
             padding: 3rem 2rem;
             text-align: center;
             position: relative;
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.03), rgba(165, 214, 167, 0.05));
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.03), rgba(255, 204, 128, 0.05));
         }
 
         .businessName span {
-            background: linear-gradient(45deg, #43A047, #66BB6A, #81C784);
-    -webkit-background-clip: text;
+            background: linear-gradient(45deg, #FF6F00, #FFA726, #FFCC80);
+            -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient 6s ease infinite;
@@ -77,12 +77,15 @@
 
         .businessName::before,
         .businessName::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-color: var(--primary-color);
-            animation: cornerPulse 2s infinite;
+            .businessName::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: #FFA726; /* Orange equivalent for var(--primary-color) */
+    animation: cornerPulse 2s infinite;
+}
+
         }
 
         .businessName::before {
@@ -93,24 +96,26 @@
         }
 
         .businessName::after {
-            background: linear-gradient(90deg, #4CAF50, #81C784);
+            background: linear-gradient(90deg, #FF9800, #FFCC80);
 
-            bottom: -5px;
-            right: 0;
-            border-left: none;
-            border-top: none;
+bottom: -5px;
+right: 0;
+border-left: none;
+border-top: none;
+
         }
 
         .subText {
-            font-size: 1.1rem;
-            color: #66BB6A;
+    font-size: 1.1rem;
+    color: #FFA726; /* Orange equivalent to #66BB6A */
 
-            opacity: 0.8;
-            margin-top: 1rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+    opacity: 0.8;
+    margin-top: 1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 
         @keyframes gradient {
     0% {
@@ -183,14 +188,15 @@
         
             .businessName::after {
                 content: '';
-                position: absolute;
-                bottom: -10px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 60px;
-                height: 3px;
-                background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-                border-radius: 2px;
+position: absolute;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%);
+width: 60px;
+height: 3px;
+background: linear-gradient(90deg, #FF9800, #FFB74D); /* Replace with your desired orange tones */
+border-radius: 2px;
+
             }
 
             .mainContainer {
@@ -662,7 +668,7 @@
 
         <div class="mainContainer">
             <div style="z-index: 1000;" class="productCard">
-                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacketgreen.png" alt="Denim Jacket" class="productImage">
+                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacket.png" alt="Denim Jacket" class="productImage">
                 <div class="productInfo">
                     <h3 class="productTitle">Vintage Denim Jacket</h3>
                     <p class="productDetails">Size: M | Condition: Good<br>Original Price: $80</p>
@@ -700,7 +706,7 @@
             </div>
 
             <div style="z-index: 1000;" class="productCard">
-                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacketgreen.png" alt="Denim Jacket" class="productImage">
+                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacket.png" alt="Denim Jacket" class="productImage">
                 <div class="productInfo">
                     <h3 class="productTitle">Vintage Denim Jacket</h3>
                     <p class="productDetails">Size: M | Condition: Good<br>Original Price: $80</p>
@@ -734,7 +740,7 @@
                     </button>
                 </div>
             </div>            <div style="z-index: 1000;" class="productCard">
-                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacketgreen.png" alt="Denim Jacket" class="productImage">
+                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacket.png" alt="Denim Jacket" class="productImage">
                 <div class="productInfo">
                     <h3 class="productTitle">Vintage Denim Jacket</h3>
                     <p class="productDetails">Size: M | Condition: Good<br>Original Price: $80</p>
@@ -768,7 +774,7 @@
                     </button>
                 </div>
             </div>            <div style="z-index: 1000;" class="productCard">
-                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacketgreen.png" alt="Denim Jacket" class="productImage">
+                <img style="z-index: 0;margin-bottom: -3vh; margin-left: 2.1vw; width: 12vw" src="./data/denimJacket.png" alt="Denim Jacket" class="productImage">
                 <div class="productInfo">
                     <h3 class="productTitle">Vintage Denim Jacket</h3>
                     <p class="productDetails">Size: M | Condition: Good<br>Original Price: $80</p>
@@ -811,7 +817,7 @@
                 <div class="swapContainer">
                     <div class="swapItem">
                         <h3>Your Item</h3>
-                        <img src="./data/designerWatch.png" alt="Your Item" class="swapImage" id="yourItemImage">
+                        <img src="./data/denimJacketEdis.png" alt="Your Item" class="swapImage" id="yourItemImage">
                         <h4 id="yourItemTitle" style="color: var(--primary-color); margin: 0.5rem 0;"></h4>
                         <div class="swapDetails">
                             <p>Condition: Excellent</p>
@@ -865,7 +871,7 @@
             const items = {
                 "Vintage Denim Jacket": {
                     price: "80",
-                    image: "./data/denimJacketgreen.png"
+                    image: "./data/denimJacket.png"
                 },
                 "Floral Summer Dress": {
                     price: "65",
