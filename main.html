@@ -212,12 +212,16 @@
                 transition: transform 0.6s var(--transition-timing);
             }
 
-    /* Mobile-specific styles */
     @media (max-width: 768px) {
         .businessName {
             font-size: 3rem;
             letter-spacing: 3px;
         }
+
+        .productCard {
+                padding-bottom: 50vh;
+            }
+
 
         .mainContainer {
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -238,7 +242,6 @@
             display: block;
         }
 
-        /* Reset all specific image styles */
         .productCard img {
             margin: 0 auto !important;
             padding: 1rem !important;
@@ -248,7 +251,6 @@
             max-height: 200px !important;
         }
 
-        /* Modal adjustments for mobile */
         .swapContent {
             padding: 1rem;
             width: 95%;
@@ -286,7 +288,6 @@
             overflow-y: auto;
         }
 
-        /* Adjust confirmation message for mobile */
         #confirmationContent {
             padding: 1rem;
         }
@@ -304,7 +305,6 @@
         }
     }
 
-    /* Additional mobile optimizations */
     @media (max-width: 480px) {
         .businessName {
             font-size: 2.5rem;
